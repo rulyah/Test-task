@@ -17,6 +17,7 @@ public class Gun : MonoBehaviour
         {
             projectile.transform.position = _shootPoint.position;
             projectile.Fire(_shootPoint.forward);
+            PlayShootFX();
             Reload();
         }));
     }
@@ -24,6 +25,14 @@ public class Gun : MonoBehaviour
     private void Reload()
     {
         StartCoroutine(Delay(GameConfig.instance.reloadTime, () => isCanShoot = true));
+    }
+
+    private void PlayShootFX()
+    {
+        var fx = Factory.instance.GetShootFX();
+        fx.transform.SetParent(_shootPoint);
+        fx.transform.localPosition = Vector3.zero;
+        StartCoroutine(Delay(1.0f, () => Factory.instance.HideShootFX(fx)));
     }
     
     private void Update()

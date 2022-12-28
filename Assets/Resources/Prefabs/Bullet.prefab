@@ -63,6 +63,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 917009500701456244}
+  _hitFX: {fileID: 100004, guid: b46890100828db6429ff69c322b45893, type: 3}
+  _flyingFx: {fileID: 100000, guid: a817de05addd7b64faa73b34c74013ce, type: 3}
 --- !u!1 &6981344531992237962
 GameObject:
   m_ObjectHideFlags: 0

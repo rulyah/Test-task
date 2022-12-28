@@ -11,6 +11,7 @@ public class Core : MonoBehaviour
         Model.ships = new List<Ship>();
         InitShipsOnScene();
         Ship.onShipDie += CheckShipsCount;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void InitShipsOnScene()
@@ -27,7 +28,7 @@ public class Core : MonoBehaviour
     {
         if (Model.ships.Count < GameConfig.instance.maxShipsCount)
         {
-            for (var i = Model.ships.Count; i <= GameConfig.instance.maxShipsCount; i++)
+            for (var i = Model.ships.Count; i < GameConfig.instance.maxShipsCount; i++)
             {
                 _shipsSpawner.SpawnShip();
             }

@@ -25,7 +25,6 @@ namespace UI
         {
             if (_canvasGroup.alpha > 0)
             {
-                //transform.LookAt(_camera.transform);
                 var direction = Vector3.Normalize(transform.position - _camera.transform.position);
                 transform.rotation = Quaternion.LookRotation(direction);
             }

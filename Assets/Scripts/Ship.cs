@@ -7,6 +7,7 @@ public class Ship : MonoBehaviour, IALive
 {
     [SerializeField] private HealthBar _healthBar;
     [SerializeField] private Rigidbody _rigidbody;
+    
     private Vector3 _moveDirection;
     private Transform _movePoint => GameConfig.instance.wayPoints[model.pointIndex];
     public ShipModel model { get; private set; }

@@ -6,6 +6,7 @@ public class ShipsSpawner : MonoBehaviour
 {
     [SerializeField] private List<Transform> _spawnPoints;
     [SerializeField] private Transform _gunTransform;
+    
     private List<Transform> _correctPos;
 
     public void SpawnShip()
@@ -15,7 +16,6 @@ public class ShipsSpawner : MonoBehaviour
             Random.insideUnitCircle.x * 100.0f, 
             0.0f, 
             Random.insideUnitCircle.y * 100.0f);
-        Model.ships.Add(ship);
         ship.Init();
         _correctPos.Clear();
     }
