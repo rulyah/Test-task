@@ -6,7 +6,8 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     [SerializeField] private Transform _shootPoint;
-    [SerializeField] private Camera _camera;
+    [SerializeField] private CameraController _camera;
+    [SerializeField] private AudioSource _audioSource;
 
     public bool isCanShoot = true;
 
@@ -15,6 +16,7 @@ public class Gun : MonoBehaviour
         isCanShoot = false; 
         StartCoroutine(Delay(GameConfig.instance.prepareForShooting, () =>
         {
+            _audioSource.Play();
             projectile.transform.position = _shootPoint.position;
             projectile.Fire(_shootPoint.forward);
             PlayShootFX();
