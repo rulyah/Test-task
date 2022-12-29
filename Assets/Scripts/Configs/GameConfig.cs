@@ -16,6 +16,7 @@ namespace Configs
         public float reloadTime = 2.0f;
         public float prepareForShooting = 0.3f;
         public float gunRotationSpeed = 0.5f;
+        public float shipRotationSpeed = 0.8f;
         public float cameraSensitivity = 15.0f;
         public float cameraSmooth = 0.1f;
         public int maxShipHealth = 3;

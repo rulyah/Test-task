@@ -9,6 +9,7 @@ public class Ship : MonoBehaviour, IALive
     [SerializeField] private Rigidbody _rigidbody;
     
     private Vector3 _moveDirection;
+    private Quaternion _rotation;
     private Transform _movePoint => GameConfig.instance.wayPoints[model.pointIndex];
     public ShipModel model { get; private set; }
     public static Action onShipDie;
@@ -79,7 +80,7 @@ public class Ship : MonoBehaviour, IALive
     {
         GoNextMovePoint();
         _moveDirection = Vector3.Normalize(_movePoint.position - transform.position);
-        transform.forward = _moveDirection;
+        _rotation = Quaternion.LookRotation(_moveDirection);
     }
     
     private void OnCollisionEnter(Collision collision)
@@ -98,6 +99,8 @@ public class Ship : MonoBehaviour, IALive
             var distance = Vector3.Distance(transform.position, _movePoint.position);
             if (distance <= 0.5f) OnReachPoint();
             _rigidbody.velocity = _moveDirection * model.currentSpeed;
+            transform.rotation = Quaternion.Lerp(transform.rotation, _rotation, 
+                GameConfig.instance.shipRotationSpeed * Time.deltaTime);
         }
         else
         {
