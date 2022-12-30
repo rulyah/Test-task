@@ -4,15 +4,16 @@ using UnityEngine;
 public class Factory : MonoBehaviour
 {
     public static Factory instance { get; private set; }
-
-
+    
     [SerializeField] private Ship _shipPrefab;
     [SerializeField] private Bullet _bulletPrefab;
     [SerializeField] private GameObject _shootFXPrefab;
+    [SerializeField] private GameObject _blowingUpFXPrefab;
     
     private List<Ship> _hiddenShips;
     private List<Bullet> _hiddenBullets;
     private List<GameObject> _hiddenShootFx;
+    private List<GameObject> _hiddenBlowingUpFx;
 
     private void Awake()
     {
@@ -56,8 +57,7 @@ public class Factory : MonoBehaviour
             return bullet;
         }
     }
-
-
+    
     public GameObject GetShootFX()
     {
         if (_hiddenShootFx.Count > 0)
@@ -70,6 +70,21 @@ public class Factory : MonoBehaviour
         else
         {
             return Instantiate(_shootFXPrefab);
+        }
+    }
+
+    public GameObject GetBlowingUpFX()
+    {
+        if (_hiddenShootFx.Count > 0)
+        {
+            var fx = _hiddenBlowingUpFx[0];
+            _hiddenBlowingUpFx.Remove(fx);
+            fx.SetActive(true);
+            return fx;
+        }
+        else
+        {
+            return Instantiate(_blowingUpFXPrefab);
         }
     }
 
@@ -89,6 +104,12 @@ public class Factory : MonoBehaviour
     public void HideShootFX(GameObject fx)
     {
         _hiddenShootFx.Add(fx);
+        fx.SetActive(false);
+    }
+    
+    public void HideBlowingUpFX(GameObject fx)
+    {
+        _hiddenBlowingUpFx.Add(fx);
         fx.SetActive(false);
     }
 }

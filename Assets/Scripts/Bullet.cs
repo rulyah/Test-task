@@ -30,6 +30,12 @@ public class Bullet : MonoBehaviour, IProjectile
         Factory.instance.HideBullet(this);
     }
 
+    private void PlayBlowingUpFX()
+    {
+        var fx = Factory.instance.GetBlowingUpFX();
+        fx.transform.position = transform.position;
+        fx.transform.LookAt(transform);
+    }
     
     private void Update()
     {
@@ -41,6 +47,7 @@ public class Bullet : MonoBehaviour, IProjectile
             _firstPos = _secondPos;
             if (hit.collider.gameObject.GetComponent<IALive>() is Ship ship)
             {
+                PlayBlowingUpFX();
                 HitEnemy(ship);
                 _canDamage = false;
                 HideBullet();

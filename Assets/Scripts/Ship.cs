@@ -48,7 +48,6 @@ public class Ship : MonoBehaviour, IALive
         _healthBar.ChangeHealthBar(model.health, GameConfig.instance.maxShipHealth);
         model.pointIndex = FindClosestPointIndex();
         _moveDirection = Vector3.Normalize(_movePoint.position - transform.position);
-        //transform.forward = _moveDirection;
         _rotation = Quaternion.LookRotation(_moveDirection);
     }
 

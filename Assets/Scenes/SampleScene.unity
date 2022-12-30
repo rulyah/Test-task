@@ -1808,6 +1808,7 @@ MonoBehaviour:
   _shipPrefab: {fileID: 6571646274700195344, guid: 442d1f2b343a4462082f96d661dbcde7, type: 3}
   _bulletPrefab: {fileID: 6480955279534599443, guid: fd9631fe1a815404ab3085e0b7a6ee46, type: 3}
   _shootFXPrefab: {fileID: 100004, guid: eb947537a274e4c93b54029eea7197ae, type: 3}
+  _blowingUpFXPrefab: {fileID: 100002, guid: 6ecf76dc4f268d340b2666896a954bcc, type: 3}
 --- !u!4 &2068720446
 Transform:
   m_ObjectHideFlags: 0
